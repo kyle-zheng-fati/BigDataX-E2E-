@@ -1,4 +1,3 @@
-# Import the necessary libraries
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 from tensorflow.python.saved_model import signature_constants
@@ -26,7 +25,6 @@ def covert_pb_saved_model(graph_def, export_dir, input_name='input', output_name
     with tf.Session(graph=tf.Graph()) as sess:
         tf.import_graph_def(graph_def, name="")
         g = tf.get_default_graph()
-        # Replace 'input:0' and 'output:0' with the actual names of your input and output tensors
         inp = g.get_tensor_by_name(input_name + ':0')
         out = g.get_tensor_by_name(output_name + ':0')
 
