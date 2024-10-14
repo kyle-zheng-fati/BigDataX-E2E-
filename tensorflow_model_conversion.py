@@ -36,4 +36,5 @@ def convert_pb_saved_model(graph_def, export_dir, input_name='input', output_nam
                                              [tag_constants.SERVING],
                                              signature_def_map=sigs)
         builder.save()
-convert_pb_to_server_model('/Users/kylezheng/Downloads/faster_rcnn_inception_v2/inference_graph/frozen_inference_graph.pb', '/Users/kylezheng', input_name='input', output_name='output')
+# convert_pb_to_server_model('/Users/kylezheng/Downloads/faster_rcnn_inception_v2/inference_graph/frozen_inference_graph.pb', '/Users/kylezheng', input_name='input', output_name='output')
+# Replace arguments in line above
