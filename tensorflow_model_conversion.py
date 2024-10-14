@@ -4,11 +4,11 @@ from tensorflow.python.saved_model import signature_constants
 from tensorflow.python.saved_model import tag_constants
 
 # Function to convert a .pb model to a SavedModel
-def covert_pb_to_server_model(pb_model_path, export_dir, input_name='input', output_name='output'):
+def convert_pb_to_server_model(pb_model_path, export_dir, input_name='input', output_name='output'):
     # Read the .pb model into a GraphDef
     graph_def = read_pb_model(pb_model_path)
     # Convert the GraphDef to a SavedModel
-    covert_pb_saved_model(graph_def, export_dir, input_name, output_name)
+    convert_pb_saved_model(graph_def, export_dir, input_name, output_name)
 
 # Function to read a .pb model into a GraphDef
 def read_pb_model(pb_model_path):
@@ -18,7 +18,7 @@ def read_pb_model(pb_model_path):
         return graph_def
 
 # Function to convert a GraphDef to a SavedModel
-def covert_pb_saved_model(graph_def, export_dir, input_name='input', output_name='output'):
+def convert_pb_saved_model(graph_def, export_dir, input_name='input', output_name='output'):
     builder = tf.saved_model.builder.SavedModelBuilder(export_dir)
 
     sigs = {}
@@ -36,4 +36,4 @@ def covert_pb_saved_model(graph_def, export_dir, input_name='input', output_name
                                              [tag_constants.SERVING],
                                              signature_def_map=sigs)
         builder.save()
-covert_pb_to_server_model('/Users/kylezheng/Downloads/faster_rcnn_inception_v2/inference_graph/frozen_inference_graph.pb', '/Users/kylezheng', input_name='input', output_name='output')
+convert_pb_to_server_model('/Users/kylezheng/Downloads/faster_rcnn_inception_v2/inference_graph/frozen_inference_graph.pb', '/Users/kylezheng', input_name='input', output_name='output')
